@@ -271,7 +271,7 @@ fractest_formulas["newton_roots"] = new Formula("newton_roots","Newton Colored R
 fractest_formulas["newton_roots"].custom[0] = 'Perturbation X'; 
 fractest_formulas["newton_roots"].custom[1] = 'Perturbation Y'; 
 
-function calculate_serpenski(cx,cy,p)
+function calculate_sierpinski(cx,cy,p)
 {
          var value = 0;
          var zx = cx;
@@ -295,5 +295,5 @@ function calculate_serpenski(cx,cy,p)
          return value;
 }
 
-fractest_formulas["serpenski"] = new Formula("serpenski","Serpenski",calculate_serpenski,"julia",-0.1,-0.1,1.1,1.1);
+fractest_formulas["sierpinski"] = new Formula("sierpinski","Sierpinski",calculate_sierpinski,"",-0.1,-0.1,1.1,1.1);
 

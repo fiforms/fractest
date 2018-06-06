@@ -6,7 +6,7 @@ A Javascript Fractal Generator. Features Include
   * Mandelbrot
   * Julia Set
   * Newton
-  * IFS-like (Serpenski Triangle, Snowflake, Fern, etc)
+  * IFS-like (Sierpinski Triangle, Snowflake, Fern, etc)
   * Fibonacci Spirals
 * Color Maps
 * Zooming

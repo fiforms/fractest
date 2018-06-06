@@ -67,7 +67,7 @@ function calculate_ifs(cx,cy,p,tr)
          return value;
 }
 
-function ifs_serpenski(cx,cy,p)
+function ifs_sierpinski(cx,cy,p)
 {
    rad = 1/3;
    offset = 0.038676;
@@ -80,9 +80,9 @@ function ifs_serpenski(cx,cy,p)
 }
 
 
-fractest_formulas["ifs-st"] = new Formula("ifs-st","IFS-Serpenski-Triangle",ifs_serpenski,"ifs-st",-0.1,-0.1,1.1,1.1);
+fractest_formulas["ifs-st"] = new Formula("ifs-st","IFS-Sierpinski-Triangle",ifs_sierpinski,"ifs-st",-0.1,-0.1,1.1,1.1);
 
-function ifs_serpenskicarpet(cx,cy,p)
+function ifs_sierpinskicarpet(cx,cy,p)
 {
    var tr = new Array(
 	new trans(0.5,0,   2,2,   0,0,1,1,1)
@@ -93,7 +93,7 @@ function ifs_serpenskicarpet(cx,cy,p)
 }
 
 
-fractest_formulas["ifs-sc"] = new Formula("ifs-sc","IFS-Serpenski-Carpet",ifs_serpenskicarpet,"ifs-sc",0,0,1,1);
+fractest_formulas["ifs-sc"] = new Formula("ifs-sc","IFS-Sierpinski-Carpet",ifs_sierpinskicarpet,"ifs-sc",0,0,1,1);
 
 function ifs_snowflake(cx,cy,p)
 {
