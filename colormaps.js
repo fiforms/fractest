@@ -110,6 +110,30 @@ function colormap_roots(length)
 
 fractest_colormaps["roots"] = new ColorMapCreator("roots","Newton Roots",colormap_roots);
 
+function colormap_logroots(length)
+// Three Colored Roots
+{
+  map = new Array();
+  var step = Math.floor(length / 3);
+  for(var j = 0; j < 3; j++)
+  {
+    for(var i = step * j; i < (step * (j+1)); i++)
+    {
+        h = (0.1 * Math.log(i - (step * j))) + (j / 3.0);
+        h = h - Math.floor(h);
+        v = (1 - Math.cos(Math.log(i - (step * j)) * 5) / 2);
+        s = (1 + Math.cos(Math.log(i - (step * j)) * 0.001) / 3);
+        
+        col = HSVtoRGB(h,s,v);
+        map[i] = new Color(col.r,col.g,col.b);
+    }
+  }
+
+    return map;
+}
+
+fractest_colormaps["logroots"] = new ColorMapCreator("logroots","Newton Roots (Logarithmic)",colormap_logroots);
+
 function colormap_ega(length) 
 // Actual 16-color EGA color map used in my 1998 Fractest software
 // http://en.wikipedia.org/wiki/File:EGA_Table.PNG
@@ -187,4 +211,72 @@ function colormap_greyblue(length)
 
 fractest_colormaps["greyblue"] = new ColorMapCreator("greyblue","Grey-Blue",colormap_greyblue);
 
+function HSVtoRGB(h, s, v) {
+    // From https://stackoverflow.com/questions/17242144/javascript-convert-hsb-hsv-color-to-rgb-accurately
+    var r, g, b, i, f, p, q, t;
+    if (arguments.length === 1) {
+        s = h.s, v = h.v, h = h.h;
+    }
+    i = Math.floor(h * 6);
+    f = h * 6 - i;
+    p = v * (1 - s);
+    q = v * (1 - f * s);
+    t = v * (1 - (1 - f) * s);
+    switch (i % 6) {
+        case 0: r = v, g = t, b = p; break;
+        case 1: r = q, g = v, b = p; break;
+        case 2: r = p, g = v, b = t; break;
+        case 3: r = p, g = q, b = v; break;
+        case 4: r = t, g = p, b = v; break;
+        case 5: r = v, g = p, b = q; break;
+    }
+    return {
+        r: Math.round(r * 255),
+        g: Math.round(g * 255),
+        b: Math.round(b * 255)
+    };
+}
+
+function colormap_goldenratio(length)
+// Logarithmic Colormap based on the Golden Ratio
+{
+    let h = 0.0;
+    let s = 1.0;
+    let v = 1.0;
+    let col = {};
+    let map = new Array();
+    let phi = (1 + Math.sqrt(5)) / 2
+    for(let i = 0; i < length; i++) {
+        h = (phi - 1) * Math.log(i);
+        h = h - Math.floor(h);
+        v = (1 + Math.cos(Math.log(i) * phi) / 2);
+        s = (1 + Math.cos(Math.log(i) / phi) / 2);
+        
+        col = HSVtoRGB(h,s,v);
+        map[i] = new Color(col.r,col.g,col.b);
+    }
+    return map;
+}
+fractest_colormaps["goldenratio"] = new ColorMapCreator("goldenratio","Log Phi Colorful",colormap_goldenratio);
+
+function colormap_textbook(length)
+// Logarithmic Colormap based on the Golden Ratio
+{
+    let h = 0.0;
+    let s = 0.0;
+    let v = 0.0;
+    let col = {};
+    let map = new Array();
+    for(let i = 0; i < length; i++) {
+        h = 0.1 * Math.log(i);
+        h = h - Math.floor(h);
+        v = (1 + Math.cos(Math.log(i) * 5) / 2);
+        s = (1 - Math.cos(Math.log(i) * 0.001) / 3);
+        
+        col = HSVtoRGB(h,s,v);
+        map[i] = new Color(col.r,col.g,col.b);
+    }
+    return map;
+}
+fractest_colormaps["textbook"] = new ColorMapCreator("textbook","Log Textbook",colormap_textbook);
 
