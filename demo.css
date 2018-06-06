@@ -1,0 +1,68 @@
+
+h1, h2, h3, h4
+{
+    margin-bottom: 1pt;
+}
+
+h4 
+{
+    margin-top: 0px;
+    font-style: italic;
+}
+body, html
+{
+    background-color: #555555;
+    color: #ffffff;
+}
+
+a
+{
+    color: #aaffaa;
+}
+
+div.code
+{
+    margin-left: 1in;
+    border-color: #000000;
+    border-style: solid;
+    border-width: 1px;
+    background-color: #ffffff;
+    color: #000044;
+    width: 40em;
+}
+code
+{
+    white-space: pre;
+}
+
+span.date:before
+{
+    content: "Last Modified: ";
+}
+span.date
+{
+    color: #ffffaa;
+    display: block;
+    float: right;
+    font-style: italic;
+}
+
+.gallery
+{
+    background-color: #000000;
+}
+
+.gallery img
+{
+    margin: 15px;
+    border-width: 5px;
+    border-color: #000000;
+    border-style: solid;
+}
+
+.gallery a:hover img
+{
+    border-width: 5px;
+    border-color: #116622;
+    border-style: solid;
+}

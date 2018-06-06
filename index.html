@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>FRACTEST! Fractal Generator</title>
+<link rel="stylesheet" href="demo.css" type="text/css"/>
+<style type="text/css">
+canvas {
+    padding: 5px;
+}
+#head
+{
+    position: absolute;
+    width: 32%;
+    top: 0px;
+    left: 0px;
+    margin-left: 68%;
+    height: 580px;
+    overflow: auto;
+
+}
+#holder
+{
+    position: absolute;
+    top: 0px;
+    left: 0pt;
+    width: 67%;
+    height: 580px;
+    overflow: auto;
+    background-color: #000000;
+}
+#footer
+{
+    position: absolute;
+    width: 32%;
+    top: 580px;
+    left: 0px;
+    overflow: auto;
+    height: 200px;
+    margin-left: 68%;
+
+}
+</style>
+<script type="text/javascript" src="fractest.js" >
+</script>
+<script type="text/javascript" src="fractest_ui.js" >
+</script>
+<script type="text/javascript" src="colormaps.js" >
+</script>
+<script type="text/javascript" src="colmap_historic.js" >
+</script>
+<script type="text/javascript" src="formulas.js" >
+</script>
+<script type="text/javascript" src="formulas_museum.js" >
+</script>
+<script type="text/javascript" src="formulas_wild.js" >
+</script>
+<script type="text/javascript" src="formulas_ifs.js" >
+</script>
+<script type="text/javascript" src="formulas_wave.js" >
+</script>
+</head>
+<body onresize="resizeWindow();">
+<div id="head">
+<h1>FRACTEST!</h1>
+<p>Generate Mandelbrot and Julia Set Fractals and more!</p>
+<button onclick="saveWindow();" >Copy to New Window</button><br />
+<button onclick="zoomOut();" >Zoom Out</button>
+<button onclick="zoomIn();" >Zoom In</button>
+<button onclick="resetXY();" >Reset Zoom</button> <br />
+Formula: <select name="formula" id="formula" onchange="setFormula();">
+</select><br />
+Coloring: <select name="color" id="color" onchange="makeImage('dancan',true);">
+</select><br />
+Anti-Aliasing: <select name="aa" id="aa" onchange="makeImage('dancan',true);">
+<option value="1" selected="selected">None</option>
+<option value="2">Normal (2x2)</option>
+<option value="3">Fine (3x3)</option>
+<option value="4">Super Fine (4x4)</option>
+<option value="6">Ultra Fine (6x6)</option>
+<option value="8">Nano Fine (8x8)</option>
+</select><br />
+Max Iterations:
+<select name="itMAX" id="itMAX" value="256" onchange="makeImage('dancan',true);">
+<option>64</option>
+<option>128</option>
+<option>256</option>
+<option>512</option>
+<option>1024</option>
+<option>2048</option>
+<option>4096</option>
+<option>8192</option>
+<option>16384</option>
+<option>32768</option>
+</select><br />
+<span id="customp0_label"></span>
+<input id="customp0" disabled onChange="updateCustomParams();" />
+<br />
+<span id="customp1_label"></span>
+<input id="customp1" disabled onChange="updateCustomParams();" />
+<br />
+Output Size:
+<input name="itMAX" id="boxsize" value="480" onchange="boxSize();" size="5" />
+<input type="checkbox" id="auto" name="auto" checked="checked" onchange="resizeWindow(); "/>Auto<br />
+<div id="coordinates">
+R: 0.000000000000<br />
+I: 0.000000000000
+</div>
+<div id="zoom">
+Mag:
+</div>
+<div id="status">
+Loading...
+</div>
+<div>
+<button onclick="togglePauseBuild();" id="cancelbutton">Pause Building</button>
+</div>
+<br /><br />
+<a href="doc.html" target="_blank">Complete Documentation</a> <br />
+<a href="/tech/museum/fractest" target="_blank">Fractest in the Software Museum (Including DOS Version)</a>
+</div>
+<div id="holder">
+<canvas width="480" height="480" id="dancan" style="position: absolute; top: 0px; left: 0px; z-index: 1;"></canvas>
+<canvas width="480" height="480" id="zoomarea" style="position: absolute; top: 0px; left: 0px; z-index: 2;"></canvas>
+</div>
+<div id="footer">
+Parameters (Type, X1, Y1, X2, Y2, <span id="parameternames"></span>): <input id="parameters"  onchange="loadXY();" size="60" /> <br />
+<table id="historytable">
+<tr><th>Thumb</th><th>Parameters</th></td>
+</table>
+<i>Copyright 1998-2018 by Daniel McFeeters</i><br />
+
+</div>
+
+</body>
+</html>
+
