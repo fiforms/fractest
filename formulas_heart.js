@@ -56,7 +56,7 @@ function calculate_heart_fractal(cx,cy,p)
 {
 	zx = cx;
 	zy = cy;
-	value = 0;
+	value = 1;
 	ycomp = (zy + Math.abs(zx/1.5))
 	if((zx * zx) + ycomp * ycomp >= 1) {
 		angle = Math.atan(Math.abs(zy/zx));
@@ -69,7 +69,10 @@ function calculate_heart_fractal(cx,cy,p)
 		dist = Math.sqrt(zx * zx + ycomp * ycomp)
 		zy = (p.custom[0]) - (dist * (p.custom[1]))
 		zx = angle - (set * Math.PI * 2 / 12)
-		value++
+		if(set < 3) set += 12
+		set -= 3
+		if(set > 6) set = 12 - set
+		value += set
 		ycomp = (zy + Math.abs(zx/1.5))
 		if((zx * zx) + ycomp * ycomp >= 1) {
 			return value
