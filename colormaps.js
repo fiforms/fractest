@@ -50,6 +50,21 @@ function colormap_cool(length)
 
 fractest_colormaps["cool"] = new ColorMapCreator("cool","Cool Gradient",colormap_cool);
 
+function colormap_pinks(length)
+// Sine waves, preferring brighter colors
+{
+    map = new Array();
+    for(var i = 0; i <length; i++)
+    {
+        	var r = Math.sqrt(i * 1.0)/1.5 + 0.7;
+        	map[i] = new Color(256 - Math.pow((Math.sin(r)+1),2)*48,(Math.sin(-r*0.5)+1)*128,(Math.sin(-r*1.2)+1)*96+64);
+    }
+
+    return map;
+}
+
+fractest_colormaps["pinks"] = new ColorMapCreator("pinks","Pink Gradient",colormap_pinks);
+
 function colormap_space(length)
 // Sine waves, preferring more blues and reds in the early colors
 {
