@@ -57,7 +57,7 @@ function colormap_pinks(length)
     for(var i = 0; i <length; i++)
     {
         	var r = Math.sqrt(i * 1.0)/1.5 + 0.7;
-        	map[i] = new Color(256 - Math.pow((Math.sin(r)+1),2)*48,(Math.sin(-r*0.5)+1)*128,(Math.sin(-r*1.2)+1)*96+64);
+        	map[i] = new Color(256 - Math.pow((Math.sin(r*0.7)+1),2)*48,(Math.sin(-r*0.5)+1)*128,(Math.sin(-r*0.65)+1)*96+64);
     }
 
     return map;
